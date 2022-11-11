@@ -17,8 +17,8 @@ const TestApi3 = () => {
     {
       data1: "data2",
       data2: "5",
-      data3: "3",
-      data4: "4",
+      data3: "1",
+      data4: "3",
       data5: "5",
     },
     {

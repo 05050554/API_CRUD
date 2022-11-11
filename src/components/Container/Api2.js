@@ -21,8 +21,8 @@ const TestApi2 = () => {
     {
       data1: "data3",
       data2: "2",
-      data3: "3",
-      data4: "4",
+      data3: "1",
+      data4: "1",
     },
     {
       data1: "data4",
@@ -32,7 +32,7 @@ const TestApi2 = () => {
     },
     {
       data1: "data5",
-      data2: "2",
+      data2: "1",
       data3: "3",
       data4: "4",
     },
