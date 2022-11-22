@@ -10,6 +10,44 @@ import { AddBtn, EditBtn, DeleteBtn } from "./CrudButton";
 import Box from "@mui/material/Box";
 
 const TableMoudle = (props) => {
+  const TableRowTitleFunction = () => {
+    return props.title.map((name, index) =>
+      index === 0 ? (
+        <TableCell key={index} align="left">
+          {name}
+        </TableCell>
+      ) : (
+        <TableCell key={index} align="center">
+          {name}
+        </TableCell>
+      )
+    );
+  };
+
+  const TableRowDataFunction = () => {
+    return props.items.map((item) => (
+      <TableRow
+        key={item.data1}
+        sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+      >
+        {Object.values(item).map((itemValue, index) =>
+          index === 0 ? (
+            <TableCell key={index} component="th" scope="row">
+              {itemValue}
+            </TableCell>
+          ) : (
+            <TableCell key={index} align="center">
+              {itemValue}
+            </TableCell>
+          )
+        )}
+        <TableCell align="center">
+          <EditBtn /> <DeleteBtn />
+        </TableCell>
+      </TableRow>
+    ));
+  };
+
   return (
     <>
       <Box sx={{ pb: 5 }}>
@@ -19,37 +57,11 @@ const TableMoudle = (props) => {
         <Table sx={{ minWidth: 650 }}>
           <TableHead>
             <TableRow>
-              {props.title.map((name, index) =>
-                index === 0 ? (
-                  <TableCell key={index} align="left">{name}</TableCell>
-                ) : (
-                  <TableCell  key={index} align="center">{name}</TableCell>
-                )
-              )}
+              {TableRowTitleFunction()}
               <TableCell align="center">Action</TableCell>
             </TableRow>
           </TableHead>
-          <TableBody>
-            {props.items.map((item) => (
-              <TableRow
-                key={item.data1}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              >
-                {Object.values(item).map((itemValue, index) =>
-                  index === 0 ? (
-                    <TableCell  key={index} component="th" scope="row">
-                      {itemValue}
-                    </TableCell>
-                  ) : (
-                    <TableCell  key={index} align="center">{itemValue}</TableCell>
-                  )
-                )}
-                <TableCell align="center">
-                  <EditBtn /> <DeleteBtn />
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
+          <TableBody>{TableRowDataFunction()}</TableBody>
         </Table>
       </TableContainer>
     </>
